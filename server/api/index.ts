@@ -24,7 +24,8 @@ connections();
 
 // middleware
 app.use(cors({
-    origin: process.env.FRONTEND,
+    origin: "*",
+    credentials: true,
 }));
 app.use(clerkMiddleware({
     publishableKey: process.env.CLERK_PUBLISHABLE_KEY,
