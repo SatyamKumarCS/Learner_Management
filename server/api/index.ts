@@ -23,7 +23,10 @@ const connections = async () => {
 connections();
 
 // middleware
-app.use(cors());
+app.use(cors({
+    origin: [process.env.FRONTEND],
+    credentials: true,
+}));
 app.use(clerkMiddleware({
     publishableKey: process.env.CLERK_PUBLISHABLE_KEY,
     secretKey: process.env.CLERK_SECRET_KEY,
