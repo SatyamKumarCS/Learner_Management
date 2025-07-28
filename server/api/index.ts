@@ -15,9 +15,12 @@ const app = express();
 
 
 // connect to db
-await connectDB();
-await connectCloudinay();
+const connections = async () => {
+    await connectDB();
+    await connectCloudinay();
+}
 
+connections();
 
 // middleware
 app.use(cors());
