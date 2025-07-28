@@ -86,6 +86,7 @@ export const addCourse = async (req, res) => {
         res.json({ success: true, message: "Course Added", course: newCourse });
 
     } catch (error) {
+        console.error(error);
         res.json({ success: false, message: error.message });
     }
 };

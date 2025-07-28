@@ -77,7 +77,7 @@ const CourseDetails = () => {
 	}, []);
 
 	useEffect(() => {
-		if (userData && courseData) {
+		if (userData && courseData && userData.enrolledCourses) {
 			setIsAlreadyEnrolled(userData.enrolledCourses.includes(courseData._id));
 		}
 	}, [userData, courseData]);
@@ -151,9 +151,8 @@ const CourseDetails = () => {
 									>
 										<div className="flex items-center gap-2">
 											<img
-												className={`transform transition-transform ${
-													openSections[index] ? "rotate-180" : ""
-												}`}
+												className={`transform transition-transform ${openSections[index] ? "rotate-180" : ""
+													}`}
 												src={assets.down_arrow_icon}
 												alt="down_arrow_icon"
 											/>
@@ -168,9 +167,8 @@ const CourseDetails = () => {
 									</div>
 
 									<div
-										className={`overflow-hidden transition-all duration-300 ${
-											openSections[index] ? "max-h-9g" : "max-h-0"
-										}`}
+										className={`overflow-hidden transition-all duration-300 ${openSections[index] ? "max-h-9g" : "max-h-0"
+											}`}
 									>
 										<ul className="list-disc md:pl-10 pl-4 pr-4 py-2 text-gray-600 border-t border-gray-300">
 											{chapter.chapterContent.map((lecture, i) => (
@@ -312,24 +310,24 @@ const CourseDetails = () => {
 						</div>
 
 						<div
-							// onClick={enrollCourse}
-							
+						// onClick={enrollCourse}
+
 						>
 							{isAlreadyEnrolled
 								? <p className="md:mt-6 mt-4 w-full py-3 rounded text-center  bg-blue-600 text-white font-medium"> Already Enrolled </p>
 								: courseData.coursePrice -
-										(courseData.discount * courseData.coursePrice) / 100 ===
-								  0.00
-								? <p className="md:mt-6 mt-4 w-full py-3 rounded text-center  bg-blue-600 text-white font-medium"> Free </p>
-								: <button onClick={enrollCourse} className="md:mt-6 mt-4 w-full py-3 rounded text-center  bg-blue-600 text-white font-medium"> Enroll Now</button>}
+									(courseData.discount * courseData.coursePrice) / 100 ===
+									0.00
+									? <p className="md:mt-6 mt-4 w-full py-3 rounded text-center  bg-blue-600 text-white font-medium"> Free </p>
+									: <button onClick={enrollCourse} className="md:mt-6 mt-4 w-full py-3 rounded text-center  bg-blue-600 text-white font-medium"> Enroll Now</button>}
 						</div>
 
 						<div >
 							{courseData.coursePrice -
 								(courseData.discount * courseData.coursePrice) / 100 ===
-							0.00 ? (
+								0.00 ? (
 								<p className="md:mt-6 mt-4 w-full text-center py-3 rounded  bg-blue-600 text-white font-medium">Click on Course structure </p>
-							) : isAlreadyEnrolled ? <Link  to="/my-enrollments"><p className="md:mt-6 mt-4 w-full text-center py-3 rounded  bg-blue-600 text-white font-medium">My Enrollments</p> </Link> : ""}
+							) : isAlreadyEnrolled ? <Link to="/my-enrollments"><p className="md:mt-6 mt-4 w-full text-center py-3 rounded  bg-blue-600 text-white font-medium">My Enrollments</p> </Link> : ""}
 						</div>
 
 						<div className="pt-6">
