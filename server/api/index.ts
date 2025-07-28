@@ -24,7 +24,7 @@ connections();
 
 // middleware
 app.use(cors({
-    origin: [process.env.FRONTEND],
+    origin: process.env.FRONTEND,
     credentials: true,
 }));
 app.use(clerkMiddleware({
